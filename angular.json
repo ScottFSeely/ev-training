@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ev-training"
+    }
+  },
+  "defaultProject": "ev-training",
+  "cli": {
+    "analytics": false
+  }
 }
