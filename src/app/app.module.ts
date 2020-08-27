@@ -7,18 +7,28 @@ import { AppComponent } from './app.component';
 import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TourOfHeroesComponent } from './tour-of-heroes/tour-of-heroes.component';
+import { HeroesComponent } from './heroes/heroes.component';
+
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 @NgModule({
   declarations: [
     AppComponent,
     FirstComponent,
     SecondComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TourOfHeroesComponent,
+    HeroesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    FormsModule
+  ],
+  exports: [
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
