@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css");
+
+.padded {
+    padding: 25px;
+}
+.component-txt {
+    font-family:"verdana";
+}
