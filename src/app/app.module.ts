@@ -9,7 +9,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { TourOfHeroesComponent } from './tour-of-heroes/tour-of-heroes.component';
 import { HeroesComponent } from './heroes/heroes.component';
 
-import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { FormsModule } from '@angular/forms';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { MessagesComponent } from './messages/messages.component'; // <-- NgModel lives here
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
     FirstComponent,
     PageNotFoundComponent,
     TourOfHeroesComponent,
-    HeroesComponent
+    HeroesComponent,
+    HeroDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

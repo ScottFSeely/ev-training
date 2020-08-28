@@ -1,4 +1,10 @@
-<!-- <h1>{{title}}</h1> -->
+
 <div class="padded">
-    <app-heroes></app-heroes>
+    <h1>{{ title }}</h1>
+    <br>
+    <nav>
+        <a routerLink="heroes" class="btn btn-primary">Heroes</a>
+    </nav>
+    <router-outlet></router-outlet>
+    <app-messages></app-messages>
 </div>
