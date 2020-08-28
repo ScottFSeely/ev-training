@@ -4,8 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-tour-of-heroes',
   templateUrl: './tour-of-heroes.component.html',
   styleUrls: [
-    './tour-of-heroes.component.scss', 
-    '../app.component.scss'
+    './tour-of-heroes.component.scss'
   ]
 })
 export class TourOfHeroesComponent implements OnInit {

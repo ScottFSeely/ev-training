@@ -9,8 +9,7 @@ import { MessageService } from '../message.service'
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: [
-    './heroes.component.scss', 
-    '../app.component.scss'
+    './heroes.component.scss'
   ]
 })
 export class HeroesComponent implements OnInit {

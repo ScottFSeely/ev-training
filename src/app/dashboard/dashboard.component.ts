@@ -8,8 +8,8 @@ import { MessageService } from '../message.service'
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: [
-    './dashboard.component.scss',
-    '../app.component.scss']
+    './dashboard.component.scss'
+  ]
 })
 export class DashboardComponent implements OnInit {
   selectedHero: Hero;

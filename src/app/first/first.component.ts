@@ -4,8 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-first',
   templateUrl: './first.component.html',
   styleUrls: [
-    './first.component.scss', 
-    '../app.component.scss'
+    './first.component.scss'
   ]
 })
 export class FirstComponent implements OnInit {
