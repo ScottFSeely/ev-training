@@ -7,6 +7,7 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
   { path: 'tour-of-heroes/heroes', component: HeroesComponent},
   { path: 'tour-of-heroes/dashboard', component: DashboardComponent },
   
-  // { path: '', redirectTo: 'path', pathMatch: 'full' },
+  // { path: '', redirectTo: 'home', pathMatch: 'full', component: HomeComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 
