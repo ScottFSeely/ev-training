@@ -1,48 +1,66 @@
-<div class="sidebar">
-  <nav class="sidebar-nav">
-    <ul class="nav">
-      <li class="nav-title">New Component</li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="new-component">
-          <i class="nav-icon cui-speedometer"></i> Nav item
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLInk="#">
-          <i class="nav-icon cui-speedometer"></i> With badge
-          <span class="badge badge-primary">NEW</span>
-        </a>
-      </li>
-      <li class="nav-item nav-dropdown">
-        <a class="nav-link nav-dropdown-toggle" href="#">
-          <i class="nav-icon cui-puzzle"></i> Nav dropdown
-        </a>
-        <ul class="nav-dropdown-items">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="nav-icon cui-puzzle"></i> Nav dropdown item
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="nav-icon cui-puzzle"></i> Nav dropdown item
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item mt-auto">
-        <a class="nav-link nav-link-success" href="https://coreui.io">
-          <i class="nav-icon cui-cloud-download"></i> Download CoreUI</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link nav-link-danger" href="https://coreui.io/pro/">
-          <i class="nav-icon cui-layers"></i> Try CoreUI
-          <strong>PRO</strong>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+<header class="app-header">
+  <header class="h1 c-header-light fixed-top">
+    <a class="c-header-brand p-2">
+      {{title}}
+    </a>
+  </header>
+</header>
+<div class="app-body">
+  <div class="sidebar">
+    <nav class="sidebar-nav">
+      <ul class="nav">
+        <li class="nav-title">Sidebar</li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['first']">
+            <i class="nav-icon cui-speedometer"></i> Buttons
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['tour-of-heroes']">
+            <i class="nav-icon cil-3d"></i> Tour of Heroes
+            <span class="badge badge-primary"></span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/heroes']">
+            <i class="nav-icon cil-3d"></i> Heroes
+          </a>
+        </li>
+        <li class="nav-item nav-dropdown">
+          <a class="nav-link nav-dropdown-toggle" href="#">
+            <i class="nav-icon cui-puzzle"></i> Nav dropdown
+          </a>
+          <ul class="nav-dropdown-items">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="nav-icon cui-puzzle"></i> Nav dropdown item
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="nav-icon cui-puzzle"></i> Nav dropdown item
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item mt-auto">
+          <a class="nav-link nav-link-success" href="https://coreui.io">
+            <i class="nav-icon cui-cloud-download"></i> Download CoreUI</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-danger" href="https://coreui.io/pro/">
+            <i class="nav-icon cui-layers"></i> Try CoreUI
+            <strong>PRO</strong>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+  </div>
+  <main class="main">
+    <!-- Main content here -->
+    <router-outlet></router-outlet>
+  </main>
 </div>
 
-<router-outlet></router-outlet>
+

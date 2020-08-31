@@ -1,0 +1,13 @@
+
+<div class="padded">
+    <h1>{{ title }}</h1>
+    
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button [routerLink]="['dashboard']" type="button" class="btn btn-secondary">Dashboard</button>
+        <button [routerLink]="['heroes']" type="button" class="btn btn-secondary">Heroes</button>
+      </div>
+    <br>
+    <router-outlet></router-outlet>
+    <app-messages></app-messages>
+</div>
+<router-outlet></router-outlet>
