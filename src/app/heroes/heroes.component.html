@@ -1,14 +1,3 @@
-<div class="heroes">
-  <h2>My Heroes</h2>
-  <ul class="heroes">
-    <li *ngFor="let hero of heroes">
-      <a routerLink="/detail/{{hero.id}}">
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
-      </a>
-    </li>
-  </ul>
-</div>
-
 <div>
   <label>Hero name:
     <input #heroName />
