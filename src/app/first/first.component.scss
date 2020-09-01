@@ -1,0 +1,37 @@
+div.container-1 {
+
+}
+
+div.container-1{
+    padding: 10px;
+    gap: 50px;
+}
+
+.vert-stack div{
+    display: flex;
+    flex-direction: column;
+}
+
+.horiz-stack div{
+    display: flex;
+    flex-direction: row;
+}
+
+div.container-2 {
+    border: 3px #fff solid;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.box-1 {
+
+}
+
+.box-2 {
+
+}
+
+.box-3 {
+
+}
