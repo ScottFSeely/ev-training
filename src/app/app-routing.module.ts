@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
+  // my components
   { path: 'first', component: FirstComponent },
   { path: 'tour-of-heroes', component: TourOfHeroesComponent},
   { path: 'detail/:id', component: HeroDetailComponent },
