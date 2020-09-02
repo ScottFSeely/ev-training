@@ -44,10 +44,10 @@ import { NewsComponent } from './news/news.component';
     RouterModule,
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false })
+    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false })
   ],
   exports: [
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

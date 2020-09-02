@@ -10,8 +10,8 @@ import { TopHeadlines_t } from './top-headlines';
 })
 export class ApiService {
   API_KEY = 'd3d3e9b9136d45c1a513dc5a7086909d';
-  url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=d3d3e9b9136d45c1a513dc5a7086909d';
-  
+  url = '/v2/top-headlines?country=us&apiKey=d3d3e9b9136d45c1a513dc5a7086909d';
+
   constructor( private http: HttpClient ) { }
 
   // methods
