@@ -1,8 +1,11 @@
 
 <div *ngFor="let article of articles">
+    <p>{{ article }}</p>
     <h2>{{ article.title }}</h2>
         <p>
             {{article.description}}
         </p>
-        <a class="btn btn-secondary" href="{{article.url}}">Read full article</a>
+        <a class="btn btn-secondary" href="{{article.url}}">
+            Read full article
+        </a>
 </div>
