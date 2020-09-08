@@ -15,10 +15,10 @@ import { ApiService } from '../api.service';
 })
 export class NewsComponent implements OnInit {
 
-  profileForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-  });
+  // profileForm = new FormGroup({
+  //   firstName: new FormControl(''),
+  //   lastName: new FormControl(''),
+  // });
   articles;
   search;
   values = '';
@@ -49,7 +49,7 @@ export class NewsComponent implements OnInit {
     
   // }
 
-  getArticle() {
+  getArticle(event: any) {
     // this.search = document.getElementById("article_name_search");
     console.log(this.name);
     console.log(this.search);
@@ -68,9 +68,9 @@ export class NewsComponent implements OnInit {
   profileForm() {
 
   }
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.profileForm.value);
-  }
+  // onSubmit() {
+  //   // TODO: Use EventEmitter with form value
+  //   console.warn(this.profileForm.value);
+  // }
 
 }

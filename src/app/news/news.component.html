@@ -3,10 +3,10 @@
         <label>
             <input type = "text" [formControl] = "name">
         </label>
-        <form [formGroup]="search" (ngSubmit)="getArticle()">Go</form>
+        <!-- <form [formGroup]="search" (ngSubmit)="getArticle()">Go</form> -->
         <!-- <input id="article_name_search" /> -->
-        <button (click)="getArticle()">Go</button> 
-
+        <button (click)="getArticle($event)">Go</button> 
+<!-- 
         <form [formGroup]="profileForm">
   
             <label>
@@ -19,8 +19,8 @@
               <input type="text" formControlName="lastName">
             </label>
           
-        </form>
-        <form [formGroup]="profileForm" (ngSubmit) = "onSubmit()"></form>
+        </form> -->
+        <!-- <form [formGroup]="profileForm" (ngSubmit) = "onSubmit()"></form> -->
 
         <!-- <p>value: {{name.value}}</p> -->
     
