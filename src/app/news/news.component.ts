@@ -49,10 +49,12 @@ export class NewsComponent implements OnInit {
     
   // }
 
-  getArticle(event: any) {
+  getArticle() {
     // this.search = document.getElementById("article_name_search");
-    console.log(this.name);
-    console.log(this.search);
+    // console.log(this.name.value);
+    
+    this.name.valueChanges.subscribe(x => console.log(x))
+    // console.log(this.search);
     // var this.search = document.getElementById('article_name_search');
     // console.log(search);
     // console.log("hi");
