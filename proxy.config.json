@@ -1,0 +1,7 @@
+{
+    "/v2": {
+        "target": "http://newsapi.org",
+        "secure": false,
+        "changeOrigin": true
+    }
+}

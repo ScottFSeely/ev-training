@@ -1,11 +1,53 @@
+<body>
+    <div class="padded">
+        <label>
+            <input type = "text" [formControl] = "name">
+        </label>
+        <form [formGroup]="search" (ngSubmit)="getArticle()">Go</form>
+        <!-- <input id="article_name_search" /> -->
+        <button (click)="getArticle()">Go</button> 
 
-<div *ngFor="let article of articles">
-    <p>{{ article }}</p>
-    <h2>{{ article.title }}</h2>
-        <p>
-            {{article.description}}
-        </p>
-        <a class="btn btn-secondary" href="{{article.url}}">
-            Read full article
-        </a>
-</div>
+        <form [formGroup]="profileForm">
+  
+            <label>
+              First Name:
+              <input type="text" formControlName="firstName">
+            </label>
+          
+            <label>
+              Last Name:
+              <input type="text" formControlName="lastName">
+            </label>
+          
+        </form>
+        <form [formGroup]="profileForm" (ngSubmit) = "onSubmit()"></form>
+
+        <!-- <p>value: {{name.value}}</p> -->
+    
+        <!-- <input #search [formControl]="search"/> -->
+    
+        <!-- <script> 
+            function getArticle() {
+                var search = document.getElementById('article_name_search');
+                console.log(search);
+                console.log("hi");
+            }
+        </script> -->
+        
+        <!-- <body *ngIf="article_search">
+    
+        </body> -->
+        <div *ngFor="let article of articles; let i=index">
+            <div *ngIf="i<5">
+                <p>{{ article }}</p>
+                <h3>{{ article.title }}</h3>
+                <p>
+                    {{article.description}}
+                </p>
+                <a class="btn btn-secondary" href="{{article.url}}">
+                    Read full article
+                </a>
+            </div>
+        </div>
+    </div>    
+</body>

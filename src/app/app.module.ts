@@ -4,9 +4,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { from } from 'rxjs';
 
 // my components
 import { FirstComponent } from './first/first.component';
@@ -18,10 +20,13 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HomeComponent } from './home/home.component'; // <-- NgModel lives here
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+import { HomeComponent } from './home/home.component'; // <-- NgModel lives here ; what ?
+// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { InMemoryDataService } from './in-memory-data.service';
 import { NewsComponent } from './news/news.component';
+import { GDocsComponent } from './gdocs/gdocs.component';
+import { GTranslateComponent } from './gtranslate/gtranslate.component';
+import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,10 @@ import { NewsComponent } from './news/news.component';
     MessagesComponent,
     DashboardComponent,
     HomeComponent,
-    NewsComponent
+    NewsComponent,
+    GDocsComponent,
+    GTranslateComponent,
+    FormsComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +52,8 @@ import { NewsComponent } from './news/news.component';
     RouterModule,
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false })
+    ReactiveFormsModule
+    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false })
   ],
   exports: [
     
