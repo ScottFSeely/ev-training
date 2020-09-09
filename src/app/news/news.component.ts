@@ -31,7 +31,7 @@ export class NewsComponent implements OnInit {
   getArticle() {
     // add search on News API
     console.log(this.search.value);
-  
+    // this.article.split(' ');
   }
 
 }

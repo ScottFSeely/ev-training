@@ -1,24 +1,28 @@
 <body>
     <div class="padded">
         <label>
-            <input type = "text" [formControl] = "search">
+            <input placeholder = "Search an article..." type = "text" [formControl] = "search">
         </label>
         
-        <button (click)="getArticle()">Go</button> 
+        <!-- <button (click)="getArticle()">Go</button>  -->
 
+        <h1>Search Results: </h1>
         <div *ngFor="let article of articles; let i=index">
-            <div *ngFor="let word in article">
-                {{word}}
+            <div *ngFor="let word of article.title.split(' ')">
+                {{word.lowercase}}
+                <div *ngIf="word==search.value">
+                    <br/>
+                    <h3>{{ article.title }}</h3>
+                    <p>
+                        {{article.description}}
+                    </p>
+                    <a class="btn btn-secondary" href="{{article.url}}">
+                        Read full article
+                    </a>
+                </div>
             </div>
             <div *ngIf="article.title">
-                <br/>
-                <h3>{{ article.title }}</h3>
-                <p>
-                    {{article.description}}
-                </p>
-                <a class="btn btn-secondary" href="{{article.url}}">
-                    Read full article
-                </a>
+
             </div>
         </div>
     </div>    
