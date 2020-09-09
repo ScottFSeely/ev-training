@@ -5,9 +5,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { ApiService } from '../api.service';
 
-// import { MessageService } from '../message.service';
-
-
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
@@ -15,20 +12,13 @@ import { ApiService } from '../api.service';
 })
 export class NewsComponent implements OnInit {
 
-  // profileForm = new FormGroup({
-  //   firstName: new FormControl(''),
-  //   lastName: new FormControl(''),
-  // });
-  articles;
-  search;
-  values = '';
-  name = new FormControl('');
+  articles = '';
+  search = new FormControl('');
 
   constructor(
     private apiService: ApiService,
-    private http: HttpClient) { }
-
-
+    private http: HttpClient
+  ) { }
 
   ngOnInit() {
     this.apiService.getNews().subscribe(
@@ -38,41 +28,10 @@ export class NewsComponent implements OnInit {
     });
   }
 
-  // post request submit backend client side program vs client server program static but you need to store information in a db if it is dynamic
-
-  // getArticle() {
-  //   var search = document.getElementById('article_name_search').nodeValue;
-  //   console.log(search)
-  //   // let input = this.http.get.subscribe(document.getElementById('article_name_search'))
-  //   // let input = document.getElementById('article_name_search');
-  //   // return input
-    
-  // }
-
   getArticle() {
-    // this.search = document.getElementById("article_name_search");
-    // console.log(this.name.value);
-    
-    this.name.valueChanges.subscribe(x => console.log(x))
-    // console.log(this.search);
-    // var this.search = document.getElementById('article_name_search');
-    // console.log(search);
-    // console.log("hi");
+    // add search on News API
+    console.log(this.search.value);
+  
   }
-  onKey(event: any) {
-    this.values = event.target.value + ' | '
-  } 
-
-  testVal(){
-    console.log("testing");
-  }
-
-  profileForm() {
-
-  }
-  // onSubmit() {
-  //   // TODO: Use EventEmitter with form value
-  //   console.warn(this.profileForm.value);
-  // }
 
 }
