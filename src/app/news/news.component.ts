@@ -14,6 +14,7 @@ export class NewsComponent implements OnInit {
 
   articles = '';
   search = new FormControl('');
+  browse= false;
 
   constructor(
     private apiService: ApiService,
@@ -32,6 +33,11 @@ export class NewsComponent implements OnInit {
     // add search on News API
     console.log(this.search.value);
     // this.article.split(' ');
+  }
+
+  browseToggle() {
+    this.browse = !this.browse;
+    console.log(this.browse);
   }
 
 }
