@@ -17,6 +17,7 @@ export class NewsComponent implements OnInit {
   search = new FormControl('');
   browse= false;
   results = '';
+  buttonText = "Browse Articles";
 
   constructor(
     private apiService: ApiService,
@@ -44,6 +45,13 @@ export class NewsComponent implements OnInit {
 
   browseToggle() {
     this.browse = !this.browse;
+    if (this.browse) {
+      this.buttonText = "Show Articles";
+      console.log(this.buttonText);
+    } else {
+      this.buttonText = "Hide Articles";
+      console.log(this.buttonText);
+    }
     console.log(this.browse);
   }
 
