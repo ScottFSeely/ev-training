@@ -1,10 +1,15 @@
 <body>
     <div class="padded">
-        <label>
-            <input placeholder = "Search an article..." type = "text" [formControl] = "search">
-        </label>
-        <button class="btn btn-pill btn-warning" (click)="browseToggle()">Browse Articles</button>
-
+        <div class="box1">
+            <div class="box">
+                <input class="box" placeholder = "Search an article..." type = "text" [formControl] = "search">
+            </div>
+            <br/>
+            <div class="box shift">
+                <button class="btn btn-pill btn-warning" (click)="browseToggle()">Browse Articles</button>
+            </div>
+            <br/>
+        </div>
         
         <!-- <button (click)="getArticle()">Go</button>  -->
 
@@ -12,12 +17,8 @@
             <div *ngFor="let article of articles; let i=index">
                 <br/>
                 <h3>{{ article.title }}</h3>
-                <p>
-                    {{article.description}}
-                </p>
-                <a class="btn btn-secondary" href="{{article.url}}">
-                    Read full article
-                </a>
+                <p>{{article.description}}</p>
+                <a class="btn btn-secondary" href="{{article.url}}">Read full article</a>
             </div>
         </div>
         <ng-template #doSearch>
@@ -27,18 +28,11 @@
                     <div *ngIf="word==search.value">
                         <br/>
                         <h3>{{ article.title }}</h3>
-                        <p>
-                            {{article.description}}
-                        </p>
-                        <a class="btn btn-secondary" href="{{article.url}}">
-                            Read full article
-                        </a>
+                        <p>{{article.description}}</p>
+                        <a class="btn btn-secondary" href="{{article.url}}">Read full article</a>
                     </div>
                 </div>
-                <div *ngIf="article.title">
-    
-                </div>
             </div>
-        </ng-template>
-    </div>    
+        </ng-template>  
+    </div> 
 </body>

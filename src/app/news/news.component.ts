@@ -13,8 +13,10 @@ import { ApiService } from '../api.service';
 export class NewsComponent implements OnInit {
 
   articles = '';
+  gtest = '';
   search = new FormControl('');
   browse= false;
+  results = '';
 
   constructor(
     private apiService: ApiService,
@@ -26,6 +28,11 @@ export class NewsComponent implements OnInit {
       (data) => {
         console.log(data);
         this.articles = data['articles'];
+    });
+    this.http.get('https://translation.googleapis.com').subscribe(
+      (data) => {
+        console.log(data);
+        this.gtest = data['gtest'];
     });
   }
 
