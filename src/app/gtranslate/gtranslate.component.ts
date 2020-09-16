@@ -29,4 +29,5 @@ export class GTranslateComponent implements OnInit {
     this.apiService.getTr(text);
   }
 
+
 }
