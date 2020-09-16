@@ -5,16 +5,23 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { TourOfHeroesComponent } from './tour-of-heroes/tour-of-heroes.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { NewsComponent } from './news/news.component';
+import { GDocsComponent } from './gdocs/gdocs.component';
+import { GTranslateComponent } from './gtranslate/gtranslate.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
+  // my components
   { path: 'first', component: FirstComponent },
   { path: 'tour-of-heroes', component: TourOfHeroesComponent},
   { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'heroes', component: HeroesComponent},
+  { path: 'news', component: NewsComponent},
+  { path: 'gdocs', component: GDocsComponent},
+  { path: 'gtranslate', component: GTranslateComponent},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'tour-of-heroes/heroes', component: HeroesComponent},
   { path: 'tour-of-heroes/dashboard', component: DashboardComponent },

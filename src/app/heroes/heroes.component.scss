@@ -74,10 +74,17 @@ button:hover {
 }
 
 button.delete {
-  position: relative;
-  left: 30px;
-//  right: -100px;
-  top: -0px;
+//   position: relative;
+//   left: 30px;
+// //  right: -100px;
+//   top: -0px;
   background-color: gray !important;
   color: white;
+}
+
+.container {
+  grid-template-columns: auto auto auto;
+  display: grid;
+  grid-column-gap: 10px
+  align-items; // ?
 }

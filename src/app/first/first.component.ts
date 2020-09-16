@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-first',
@@ -7,11 +8,19 @@ import { Component, OnInit } from '@angular/core';
     './first.component.scss'
   ]
 })
-export class FirstComponent implements OnInit {
+export class FirstComponent implements OnInit, OnDestroy {
+  val0 = "value0";
 
-  constructor() { }
+  constructor() {
+    console.log('I am in the constructor of FirstComponent');
+   }
 
   ngOnInit(): void {
+    console.log('I am in the ngOnInit method of FirstComponent');
+  }
+
+  ngOnDestroy() {
+    console.log("I destroy!");
   }
 
 }
