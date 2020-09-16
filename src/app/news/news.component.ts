@@ -18,6 +18,7 @@ export class NewsComponent implements OnInit {
   browse= false;
   results = '';
   buttonText = "Browse Articles";
+  private result = false;
 
   constructor(
     private apiService: ApiService,
@@ -41,6 +42,16 @@ export class NewsComponent implements OnInit {
     // add search on News API
     console.log(this.search.value);
     // this.article.split(' ');
+  }
+
+  searchArticles(article_title) {
+    this.result = false;
+      for (let word of article_title) {
+        if (word == this.search) {
+          // display if result is true
+          this.result = true;
+        }
+      }
   }
 
   browseToggle() {
