@@ -10,17 +10,17 @@
       <button type="button" class="btn btn-secondary">fourth menu</button>
     </div>
   </div>
-  <div class="container-1">
+  <div class="horiz-stack">
     <h1>Flexbox?</h1>
     <p>Learning about class selectors. .class el vs el.class cs .class .</p>
-    <div class="horiz-stack">
-      <div class="box-1 container-2">
+    <div>
+      <div class="vert-stack container-2">
         <h3>Box One</h3>
         <p>
           Lorem ipsum dolor ...
         </p>
       </div>
-      <div class="box-2 container-2">
+      <div class="vert-stack container-2">
         <h3>Box Two</h3>
         <p>
           Lorem ipsum dolor ...
@@ -28,5 +28,14 @@
       </div>
     </div>
   </div>
+
+  <!-- 
+    where is this function ( onLoadConfigPress ) from  
+    https://stackoverflow.com/questions/7427041/javascript-passing-text-input-to-a-onclick-handler 
+  -->
+  <br/>
+  <input type="text" id="configname" name="configname" /> 
+  <input type="button" value="Submit" 
+  onclick="onLoadConfigPress(document.getElementById('configname').value)" />
   
 </div>

@@ -14,6 +14,8 @@ export class ApiService {
   url = '/v2/top-headlines?country=us&apiKey=d3d3e9b9136d45c1a513dc5a7086909d';
   gTr_url = "https://translation.googleapis.com";
   tr_url = "https://translation.googleapis.com/language/translate/v2";
+
+  // https://newsapi.org/v2/top-headlines?country=us&apiKey=d3d3e9b9136d45c1a513dc5a7086909d
   
   constructor( private http: HttpClient ) { }
 

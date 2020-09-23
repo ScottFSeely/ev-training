@@ -1,19 +1,14 @@
-div.container-1 {
-
-}
-
 div.container-1{
+    display: flex;
     padding: 10px;
     gap: 50px;
 }
 
-.vert-stack div{
-    display: flex;
+.vert-stack {
     flex-direction: column;
 }
 
-.horiz-stack div{
-    display: flex;
+.horiz-stack {
     flex-direction: row;
 }
 
@@ -21,7 +16,6 @@ div.container-2 {
     border: 3px #fff solid;
     padding: 10px;
     display: flex;
-    flex-direction: row;
 }
 
 .box-1 {
