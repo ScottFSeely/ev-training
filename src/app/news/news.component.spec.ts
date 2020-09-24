@@ -28,6 +28,7 @@ describe('NewsComponent: show/hide button',() => {
             // { provide: HttpClient, useClass: HttpClient}
            ]
         })
+        
         .compileComponents();
       }));
     
