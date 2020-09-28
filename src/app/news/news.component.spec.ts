@@ -66,7 +66,7 @@ describe('NewsComponent: stub ApiService should create', () => {
     component.articles = "test";
     console.log(`Show me the articles! ${component.articles}`);
 
-  })
+  });
 
 });
 
