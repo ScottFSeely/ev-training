@@ -23,7 +23,6 @@ export class GTranslateComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
     console.log(this.subscription.unsubscribe());
   }
 
