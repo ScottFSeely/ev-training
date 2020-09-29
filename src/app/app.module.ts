@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -27,6 +28,7 @@ import { NewsComponent } from './news/news.component';
 import { GDocsComponent } from './gdocs/gdocs.component';
 import { GTranslateComponent } from './gtranslate/gtranslate.component';
 import { FormsComponent } from './forms/forms.component';
+import { UnitTestComponent } from './unit-test/unit-test.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { FormsComponent } from './forms/forms.component';
     NewsComponent,
     GDocsComponent,
     GTranslateComponent,
-    FormsComponent
+    FormsComponent,
+    UnitTestComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import { FormsComponent } from './forms/forms.component';
     RouterModule,
     FormsModule,
     HttpClientModule,
+    HttpClientTestingModule,
     ReactiveFormsModule
     // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false })
   ],

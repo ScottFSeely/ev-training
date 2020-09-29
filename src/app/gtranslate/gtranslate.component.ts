@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from '../api.service';
 import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-gtranslate',
@@ -21,7 +23,6 @@ export class GTranslateComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
     console.log(this.subscription.unsubscribe());
   }
 

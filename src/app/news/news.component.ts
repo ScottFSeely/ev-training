@@ -57,13 +57,14 @@ export class NewsComponent implements OnInit {
   browseToggle() {
     this.browse = !this.browse;
     if (this.browse) {
-      this.buttonText = "Show Articles";
+      this.buttonText = "Hide Articles";
       console.log(this.buttonText);
     } else {
-      this.buttonText = "Hide Articles";
+      this.buttonText = "Show Articles";
       console.log(this.buttonText);
     }
     console.log(this.browse);
+    return this.browse;
   }
 
 }
