@@ -6,7 +6,11 @@ import { NewsComponent } from './news.component';
 import { ApiService } from '../api.service';
 import { HttpTestingController } from '@angular/common/http/testing';
 
-
+function AClass() {
+  this.aFunction = function() {
+    return "I did the thing";
+  }
+}
 
 describe('NewsComponent', () => {
   let component: NewsComponent;
