@@ -12,16 +12,13 @@ function AClass() {
   }
 }
 
-describe('NewsComponent', () => {
+xdescribe('NewsComponent', () => {
   let component: NewsComponent;
   let fixture: ComponentFixture<NewsComponent>;
-  let mySpy: jasmine.SpyObj<ApiService>;
 
   let apiService: jasmine.SpyObj<ApiService>;
   beforeEach(async(() => {
     const spy = jasmine.createSpyObj('ApiService', ['getNews']);
-    const articles = [{'hello':'bye'}];
-    // mySpy = apiService.getNews.and.returnValue(of(articles));
     // const testSpy1 = jasmine.createSpy('ApiService', ['getTranslations']);
 
     TestBed.configureTestingModule({
@@ -31,7 +28,8 @@ describe('NewsComponent', () => {
       providers: [{ provide: ApiService, useValue: spy }],
     }).compileComponents();
     apiService = TestBed.inject(ApiService) as jasmine.SpyObj<ApiService>;
-    apiService.getNews.and.returnValue(of({ articles: [{ title: 'test' }] }));    fixture = TestBed.createComponent(NewsComponent);
+    apiService.getNews.and.returnValue(of({}));
+    fixture = TestBed.createComponent(NewsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
@@ -46,7 +44,7 @@ describe('NewsComponent', () => {
 
   xit('should set articles on the component', fakeAsync(() => {
     fixture.detectChanges();
-    expect(mySpy.calls.any()).toBe(true);
+    // expect(mySpy.calls.any()).toBe(true);
     expect(component.articles?.length).toBe(10); // Assuming 10 mock articles
   }));
 
@@ -93,17 +91,31 @@ describe('NewsComponent', () => {
 
 });
 
-xdescribe("should test jasmine concepts", () => {
-  it("should create a spy on AFunction and use the fake function", () => {
-    const fakeMessage = "I did the FAKE thing HAHA";
-    var obj = new AClass();
+describe("should test jasmine concepts", () => {
+  let component: NewsComponent;
+  let fixture: ComponentFixture<NewsComponent>;
+  let service: ApiService;
 
-    // creates a fake function called aFunction in object that is called "mySpy" 
-    // and returns fakeMessage when called
-    obj.aFunction = jasmine.createSpy("mySpy").and.returnValue(fakeMessage);
-    console.log(obj.aFunction()); // call function
-    expect(obj.aFunction).toHaveBeenCalled();
-    expect(obj.aFunction()).toEqual(fakeMessage);
+  let articles: any;
+  beforeEach(fakeAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [],
+      imports: [NewsComponent],
+      providers: []
+    })
+  }))
+
+
+  it("should create a spy on AFunction and use the fake function", () => {
+    const articles = [{ articles: { 'title': 'test' } }];
+    // creates a fake function called getNews in ApiService that is called "mySpy" 
+    // and returns newsArticles when called
+    service.getNews = jasmine.createSpy("mySpy").and.returnValue(articles);
+    console.log('hello checkpoint');
+    console.log(`This is what is returned in place of getNews ${service.getNews()}`); 
+    expect(service.getNews).toHaveBeenCalled();
+    // expect(service.getNews()).toEqual(articles);
+
   })
 });
 
