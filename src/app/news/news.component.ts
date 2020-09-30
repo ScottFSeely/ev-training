@@ -31,11 +31,6 @@ export class NewsComponent implements OnInit {
         console.log(data);
         this.articles = data['articles'];
     });
-    this.http.get('https://translation.googleapis.com').subscribe(
-      (data) => {
-        console.log(data);
-        this.gtest = data['gtest'];
-    });
   }
 
   getArticle() {

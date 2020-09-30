@@ -1,72 +1,111 @@
-import { async, ComponentFixture, TestBed, inject, getTestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing'
-
-import {HttpClientModule} from '@angular/common/http';
+import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { of } from 'rxjs';
 
 import { NewsComponent } from './news.component';
-import { of } from 'rxjs';
 import { ApiService } from '../api.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpTestingController } from '@angular/common/http/testing';
 
-describe('NewsComponent: stub ApiService should create', () => {
-  let injector: TestBed;
+function AClass() {
+  this.aFunction = function () {
+    return "I did the thing";
+  }
+}
+
+describe('NewsComponent', () => {
   let component: NewsComponent;
   let fixture: ComponentFixture<NewsComponent>;
-  let service: ApiService;
-  let httpMock: HttpTestingController;
+  let mySpy: jasmine.SpyObj<ApiService>;
 
-  beforeEach(() => {
+  let apiService: jasmine.SpyObj<ApiService>;
+  beforeEach(async(() => {
+    const spy = jasmine.createSpyObj('ApiService', ['getNews']);
+    const articles = [{'hello':'bye'}];
+    // mySpy = apiService.getNews.and.returnValue(of(articles));
+    // const testSpy1 = jasmine.createSpy('ApiService', ['getTranslations']);
+
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
       declarations: [NewsComponent],
-      providers: [
-        ApiService, 
-        HttpTestingController]
-    });
-    injector = getTestBed();
-    service = injector.get(ApiService);
-    httpMock = injector.get(HttpTestingController);
-
-    fixture = TestBed.createComponent(NewsComponent);
+      imports: [HttpClientModule],
+      // replace ApiService dependency with a spy 
+      providers: [{ provide: ApiService, useValue: spy }],
+    }).compileComponents();
+    apiService = TestBed.inject(ApiService) as jasmine.SpyObj<ApiService>;
+    apiService.getNews.and.returnValue(of({ articles: [{ title: 'test' }] }));    fixture = TestBed.createComponent(NewsComponent);
     component = fixture.componentInstance;
-
-    // console.log(fixture);
-    // console.log(component);
-  });
+    fixture.detectChanges();
+  }));
 
   afterAll(() => {
     console.log(fixture);
     console.log(component);
-    console.log(httpMock);
   });
 
   afterEach(() => {
-    // httpMock.verify();
   });
 
-  it('#injector should be Truthy', () => {
-    expect(injector).toBeTruthy();
-  });
+  xit('should set articles on the component', fakeAsync(() => {
+    fixture.detectChanges();
+    expect(mySpy.calls.any()).toBe(true);
+    expect(component.articles?.length).toBe(10); // Assuming 10 mock articles
+  }));
+
   it('#service should be Truthy', () => {
-    expect(service).toBeTruthy();
+    expect(apiService).toBeTruthy();
   });
-  it('#httpMock should be Truthy', () => {
-    expect(httpMock).toBeTruthy();
-  });
-  it('#fixture should be Truthy', () => {
-    expect(fixture).toBeTruthy();
-  });
-  it('#component should be Truthy', () => {
-    expect(component).toBeTruthy();
-  });
-  it('#component should return articles', () => {
-    let articles = component.articles;
-    console.log(`Show me the articles! ${component.articles}`);
-    component.articles = "test";
-    console.log(`Show me the articles! ${component.articles}`);
 
-  });
+  xit('#fixture should be Truthy', async(() => {
+    // wait for formControl
+    fixture.whenStable().then(() => {
+      expect(fixture).toBeTruthy();
+    })
+  }));
+  xit('#component should be Truthy', async(() => {
+    // wait for formControl
+    fixture.whenStable().then(() => {
+      expect(component).toBeTruthy();
+    })
+  }));
+  it('#service method should be called', () => {
+    console.log(apiService.getNews()); // call function
+    expect(apiService.getNews).toHaveBeenCalled();
+  })
+  xit('should spy on somethings', () => {
+    let spyFunctions = spyOnAllFunctions(component);
+    console.log(`The spyFunctions looks like this: ${spyFunctions}`);
+    expect(spyFunctions).toBeDefined();
+  })
+  xit('should return "test" from spy function', fakeAsync(() => {
+    let returnedVal: any;
+    let Subscription = apiService.getNews().subscribe((result) => {
+      returnedVal = result;
+    });
+    expect(returnedVal).toEqual({ articles: 'test' });
+    expect(returnedVal['articles']).toEqual('test');
+    Subscription.unsubscribe(); // should this go inside of afterAll()? 
+  }))
+  xit('should return "hello" from spy function', () => {
+    let hola;
+    console.log('Returned from getNews is: ', apiService.getNews().subscribe((result) => { hola = result; }));
+    expect(hola).toEqual({ articles: 'test' });
+    expect(hola['articles']).toEqual('test');
+  })
 
 });
+
+xdescribe("should test jasmine concepts", () => {
+  it("should create a spy on AFunction and use the fake function", () => {
+    const fakeMessage = "I did the FAKE thing HAHA";
+    var obj = new AClass();
+
+    // creates a fake function called aFunction in object that is called "mySpy" 
+    // and returns fakeMessage when called
+    obj.aFunction = jasmine.createSpy("mySpy").and.returnValue(fakeMessage);
+    console.log(obj.aFunction()); // call function
+    expect(obj.aFunction).toHaveBeenCalled();
+    expect(obj.aFunction()).toEqual(fakeMessage);
+  })
+});
+
+
 
