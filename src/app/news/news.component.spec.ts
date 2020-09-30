@@ -15,10 +15,13 @@ function AClass() {
 describe('NewsComponent', () => {
   let component: NewsComponent;
   let fixture: ComponentFixture<NewsComponent>;
+  let mySpy: jasmine.SpyObj<ApiService>;
 
   let apiService: jasmine.SpyObj<ApiService>;
   beforeEach(async(() => {
     const spy = jasmine.createSpyObj('ApiService', ['getNews']);
+    const articles = [{'hello':'bye'}];
+    // mySpy = apiService.getNews.and.returnValue(of(articles));
     // const testSpy1 = jasmine.createSpy('ApiService', ['getTranslations']);
 
     TestBed.configureTestingModule({
@@ -28,8 +31,7 @@ describe('NewsComponent', () => {
       providers: [{ provide: ApiService, useValue: spy }],
     }).compileComponents();
     apiService = TestBed.inject(ApiService) as jasmine.SpyObj<ApiService>;
-    apiService.getNews.and.returnValue(of({ articles: [{ 'title': 'test' }] }));
-    fixture = TestBed.createComponent(NewsComponent);
+    apiService.getNews.and.returnValue(of({ articles: [{ title: 'test' }] }));    fixture = TestBed.createComponent(NewsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
@@ -42,18 +44,23 @@ describe('NewsComponent', () => {
   afterEach(() => {
   });
 
+  xit('should set articles on the component', fakeAsync(() => {
+    fixture.detectChanges();
+    expect(mySpy.calls.any()).toBe(true);
+    expect(component.articles?.length).toBe(10); // Assuming 10 mock articles
+  }));
 
   it('#service should be Truthy', () => {
     expect(apiService).toBeTruthy();
   });
 
-  it('#fixture should be Truthy', async(() => {
+  xit('#fixture should be Truthy', async(() => {
     // wait for formControl
     fixture.whenStable().then(() => {
       expect(fixture).toBeTruthy();
     })
   }));
-  it('#component should be Truthy', async(() => {
+  xit('#component should be Truthy', async(() => {
     // wait for formControl
     fixture.whenStable().then(() => {
       expect(component).toBeTruthy();
@@ -63,12 +70,12 @@ describe('NewsComponent', () => {
     console.log(apiService.getNews()); // call function
     expect(apiService.getNews).toHaveBeenCalled();
   })
-  it('should spy on somethings', () => {
+  xit('should spy on somethings', () => {
     let spyFunctions = spyOnAllFunctions(component);
     console.log(`The spyFunctions looks like this: ${spyFunctions}`);
     expect(spyFunctions).toBeDefined();
   })
-  it('should return "test" from spy function', fakeAsync(() => {
+  xit('should return "test" from spy function', fakeAsync(() => {
     let returnedVal: any;
     let Subscription = apiService.getNews().subscribe((result) => {
       returnedVal = result;
@@ -77,7 +84,7 @@ describe('NewsComponent', () => {
     expect(returnedVal['articles']).toEqual('test');
     Subscription.unsubscribe(); // should this go inside of afterAll()? 
   }))
-  it('should return "hello" from spy function', () => {
+  xit('should return "hello" from spy function', () => {
     let hola;
     console.log('Returned from getNews is: ', apiService.getNews().subscribe((result) => { hola = result; }));
     expect(hola).toEqual({ articles: 'test' });

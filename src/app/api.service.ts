@@ -1,6 +1,6 @@
 // not my stuff
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 // my stuff
 // import { TopHeadlines_t } from './top-headlines';
@@ -15,11 +15,11 @@ export class ApiService {
   // will move google translate to its own service later
   baseTranslaionUrl = "https://translation.googleapis.com";
   TranslationUrl = "https://translation.googleapis.com/language/translate/v2";
-  
-  constructor( private http: HttpClient ) { }
+
+  constructor(private http: HttpClient) { }
 
   // methods
-  public getNews(){
+  public getNews() {
     const endpoint_url = this.news_url + this.url;
     console.log(endpoint_url);
     console.log(this.http.get(endpoint_url));
@@ -29,15 +29,15 @@ export class ApiService {
   }
 
   public getTranslations(text: string) {
-    return this.http.post(this.baseTranslaionUrl+'/language/translate/v2', text);
+    return this.http.post(this.baseTranslaionUrl + '/language/translate/v2', text);
   }
 
-  public getSupportedLanguage(){
+  public getSupportedLanguage() {
     // GET /v3/{parent=projects/*}/supportedLanguages
   }
 
-  public getMock(){
+  public getMock() {
     return "test";
   }
-  
+
 }
