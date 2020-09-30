@@ -10,7 +10,7 @@ function FakeFunction() {
   this.testThing1 = ''
 }
 
-// my notes
+// my notes on functions
 let myAdd1 = function (x,y):number {
   return x+y;
 }
