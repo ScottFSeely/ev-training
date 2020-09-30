@@ -72,6 +72,11 @@ const cat = {
     console.log('meow', this);
   }
 }
+function AClass() {
+  this.aFunction = function() {
+    return "I did the thing";
+  }
+}
 
 
 
@@ -125,6 +130,20 @@ describe('NewsComponent', () => {
     expect(spyFunctions).toBeDefined();
   })
 
+});
+
+describe("should test jasmine concepts", () => {
+  it("should create a spy on AFunction and use the fake function", () => {
+    const fakeMessage = "I did the FAKE thing HAHA";
+    var obj = new AClass();
+    console.log(obj);
+    // creates a fake function called aFunction in object that is called "mySpy" 
+    // and returns fakeMessage when called
+    obj.aFunction = jasmine.createSpy("mySpy").and.returnValue(fakeMessage);
+    console.log(obj.aFunction()); // call function
+    expect(obj.aFunction).toHaveBeenCalled(); 
+    expect(obj.aFunction()).toEqual(fakeMessage);
+  })
 });
 
 // fdescribe('NewsComponent: stub ApiService should create like before', () => {
