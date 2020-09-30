@@ -96,7 +96,7 @@ describe('NewsComponent', () => {
       providers: [{ provide: ApiService, useValue: spy }],
     }).compileComponents();
     apiService = TestBed.inject(ApiService) as jasmine.SpyObj<ApiService>;
-    apiService.getNews.and.returnValue(of({}));
+    apiService.getNews.and.returnValue(of({articles: 'Test'}));
     fixture = TestBed.createComponent(NewsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -128,6 +128,10 @@ describe('NewsComponent', () => {
     let spyFunctions = spyOnAllFunctions(component);
     console.log(spyFunctions);
     expect(spyFunctions).toBeDefined();
+  })
+  it('should return "hello" from spy function', () => {
+    console.log('Returned from getNews is: ',apiService.getNews());
+    expect(apiService.getNews()['articles']).toEqual('Test');
   })
 
 });
