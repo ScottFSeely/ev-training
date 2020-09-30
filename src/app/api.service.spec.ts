@@ -5,7 +5,7 @@ import { ApiService } from './api.service';
 
 describe('ApiService', () => {
 
-    let HttpTestingController: HttpTestingController;
+    let httpMock: HttpTestingController;
     let service: ApiService;
 
     beforeEach(() => {
@@ -13,14 +13,13 @@ describe('ApiService', () => {
             imports: [
                 HttpClientTestingModule
             ],
-            declarations: [ApiService]
+            declarations: [ApiService],
+            providers: [
+                HttpTestingController
+            ]
         });
-        HttpTestingController = TestBed.inject(HttpTestingController);
+        httpMock = TestBed.inject(HttpTestingController);
         service = TestBed.inject(ApiService);
-
-    });
-
-    it('should be created', () => {
 
     });
 });

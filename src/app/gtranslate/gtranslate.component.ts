@@ -19,7 +19,13 @@ export class GTranslateComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("subscribing");
-    this.subscription = this.apiService.getTr(this.words).subscribe(() => {});
+    // // fix API key before readding this
+    // this.http.get('https://translation.googleapis.com').subscribe(
+    //   (data) => {
+    //     console.log(data);
+    //     this.gtest = data['gtest'];
+    // });
+    this.subscription = this.apiService.getTranslations(this.words).subscribe(() => {});
   }
 
   ngOnDestroy(): void {
@@ -27,7 +33,7 @@ export class GTranslateComponent implements OnInit {
   }
 
   testMethod(text: string) {
-    this.apiService.getTr(text);
+    this.apiService.getTranslations(text);
   }
 
 
