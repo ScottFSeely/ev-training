@@ -2,7 +2,9 @@
     <div class="padded">
         <div class="box1">
             <div class="box">
-                <input class="box" placeholder = "Search an article..." type = "text" [formControl] = "search">
+                <input class="box" placeholder = "Search an article..." type = "text" [formControl]="search">
+                <button (click)="getArticle()">Go</button> 
+                <!-- The angular formControl uses .valueChanges and .value to grab values from the observable -->
             </div>
             <br/>
             <div class="box shift">
@@ -11,7 +13,6 @@
             <br/>
         </div>
         
-        <!-- <button (click)="getArticle()">Go</button>  -->
 
         <div *ngIf="browse; else doSearch">
             <div *ngFor="let article of articles; let i=index">
