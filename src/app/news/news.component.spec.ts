@@ -96,7 +96,7 @@ describe('NewsComponent', () => {
       providers: [{ provide: ApiService, useValue: spy }],
     }).compileComponents();
     apiService = TestBed.inject(ApiService) as jasmine.SpyObj<ApiService>;
-    apiService.getNews.and.returnValue(of({articles: 'Test'}));
+    apiService.getNews.and.returnValue(of(1,2,3));
     fixture = TestBed.createComponent(NewsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -130,9 +130,25 @@ describe('NewsComponent', () => {
     expect(spyFunctions).toBeDefined();
   })
   it('should return "hello" from spy function', () => {
-    console.log('Returned from getNews is: ',apiService.getNews());
-    expect(apiService.getNews()['articles']).toEqual('Test');
+    let returnedVal = 0;
+    let Subscription = apiService.getNews().subscribe((result) => {
+      console.log(result);
+      returnedVal = result;
+      expect(result).toEqual(1);
+      expect(result).toEqual(2);
+      expect(result).toEqual(3);
+    });
+    console.log('Returned from getNews is: ', apiService.getNews());
+    expect(hola).toEqual({articles: 'test'});
+    expect(hola['articles']).toEqual('test');
+    Subscription.unsubscribe(); // should this go inside of afterAll()? 
   })
+  // it('should return "hello" from spy function', () => {
+  //   let hola;
+  //   console.log('Returned from getNews is: ',apiService.getNews().subscribe((result)=>{hola = result;}));
+  //   expect(hola).toEqual({articles: 'test'});
+  //   expect(hola['articles']).toEqual('test');
+  // })
 
 });
 
