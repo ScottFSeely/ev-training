@@ -25,7 +25,7 @@ export class GTranslateComponent implements OnInit {
     //     console.log(data);
     //     this.gtest = data['gtest'];
     // });
-    this.subscription = this.apiService.getTranslations(this.words).subscribe(() => {});
+    this.subscription = this.apiService.getTranslations(this.words).subscribe(() => { });
   }
 
   ngOnDestroy(): void {

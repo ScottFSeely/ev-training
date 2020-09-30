@@ -1,5 +1,5 @@
 import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { of } from 'rxjs';
 
 import { NewsComponent } from './news.component';
@@ -7,7 +7,7 @@ import { ApiService } from '../api.service';
 import { HttpTestingController } from '@angular/common/http/testing';
 
 function AClass() {
-  this.aFunction = function() {
+  this.aFunction = function () {
     return "I did the thing";
   }
 }
@@ -28,7 +28,7 @@ describe('NewsComponent', () => {
       providers: [{ provide: ApiService, useValue: spy }],
     }).compileComponents();
     apiService = TestBed.inject(ApiService) as jasmine.SpyObj<ApiService>;
-    apiService.getNews.and.returnValue(of({articles: 'test'}));
+    apiService.getNews.and.returnValue(of({ articles: [{ 'title': 'test' }] }));
     fixture = TestBed.createComponent(NewsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -60,11 +60,12 @@ describe('NewsComponent', () => {
     })
   }));
   it('#service method should be called', () => {
+    console.log(apiService.getNews()); // call function
     expect(apiService.getNews).toHaveBeenCalled();
   })
   it('should spy on somethings', () => {
     let spyFunctions = spyOnAllFunctions(component);
-    console.log(spyFunctions);
+    console.log(`The spyFunctions looks like this: ${spyFunctions}`);
     expect(spyFunctions).toBeDefined();
   })
   it('should return "test" from spy function', fakeAsync(() => {
@@ -72,14 +73,14 @@ describe('NewsComponent', () => {
     let Subscription = apiService.getNews().subscribe((result) => {
       returnedVal = result;
     });
-    expect(returnedVal).toEqual({articles: 'test'});
+    expect(returnedVal).toEqual({ articles: 'test' });
     expect(returnedVal['articles']).toEqual('test');
     Subscription.unsubscribe(); // should this go inside of afterAll()? 
   }))
   it('should return "hello" from spy function', () => {
     let hola;
-    console.log('Returned from getNews is: ',apiService.getNews().subscribe((result)=>{hola = result;}));
-    expect(hola).toEqual({articles: 'test'});
+    console.log('Returned from getNews is: ', apiService.getNews().subscribe((result) => { hola = result; }));
+    expect(hola).toEqual({ articles: 'test' });
     expect(hola['articles']).toEqual('test');
   })
 
@@ -94,7 +95,7 @@ xdescribe("should test jasmine concepts", () => {
     // and returns fakeMessage when called
     obj.aFunction = jasmine.createSpy("mySpy").and.returnValue(fakeMessage);
     console.log(obj.aFunction()); // call function
-    expect(obj.aFunction).toHaveBeenCalled(); 
+    expect(obj.aFunction).toHaveBeenCalled();
     expect(obj.aFunction()).toEqual(fakeMessage);
   })
 });

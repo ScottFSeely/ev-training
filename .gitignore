@@ -1,6 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 /Users/ecooper/Desktop/git-ev/ev-training/src/app/news/test.component.spec.txt
+src/app/news/news.component2.spec.ts
+src/app/news/news.component3.spec.ts
 .DS_Store
 node_modules/
 src/.DS_Store

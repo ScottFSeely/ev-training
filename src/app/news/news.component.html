@@ -2,7 +2,10 @@
     <div class="padded">
         <div class="box1">
             <div class="box">
-                <input class="box" placeholder = "Search an article..." type = "text" [formControl]="search">
+                <input class="box" 
+                placeholder = "Search an article..." 
+                type = "text" 
+                [formControl]="search">
                 <button (click)="getArticle()">Go</button> 
                 <!-- The angular formControl uses .valueChanges and .value to grab values from the observable -->
             </div>
