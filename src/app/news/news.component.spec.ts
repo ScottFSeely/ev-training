@@ -98,10 +98,13 @@ describe("should test jasmine concepts", () => {
   let getNews;
 
   let articles: any;
-  beforeEach(fakeAsync(() => {
+  beforeEach(async(() => {
+
     TestBed.configureTestingModule({
-      declarations: [],
-      imports: [NewsComponent],
+      declarations: [
+        NewsComponent
+      ],
+      imports: [],
       providers: [
         { provide: ApiService, useValue: spyService }
       ]
@@ -122,8 +125,8 @@ describe("should test jasmine concepts", () => {
     // creates a fake function called getNews in ApiService that is called "mySpy" 
     // and returns newsArticles when called
     spyService = jasmine.createSpyObj('spyService', ["getNews"]);
-    getNews = spyService.and.returnValue(articles);
-    console.log('hello checkpoint');
+    getNews = spyService.getNews.and.returnValue(articles);
+    console.log(`spyService.getNews: ${spyService.getNews}`);
     console.log(`This is what is returned in place of getNews ${spyService.getNews()}`);
     expect(spyService.getNews).toHaveBeenCalled();
     // expect(service.getNews()).toEqual(articles);
