@@ -21,8 +21,7 @@ export class NewsComponent implements OnInit {
   private result = false;
 
   constructor(
-    private apiService: ApiService,
-    private http: HttpClient
+    private apiService: ApiService
   ) { }
 
   ngOnInit() {
