@@ -96,7 +96,6 @@ describe("should test jasmine concepts", () => {
   let fixture: ComponentFixture<NewsComponent>;
   let spyService;
   let getNews;
-
   let newsArticles;
   beforeEach(async(() => {
 
@@ -130,12 +129,14 @@ describe("should test jasmine concepts", () => {
 
   // async and fakeAsync have caused certain things to not show up in the console. waiting for undefined things to be defined.
   it("should create a spy on AFunction and use the fake function", fakeAsync(() => {
-
+    let returnedVal;
     console.log(`spyService.getNews: ${spyService.getNews}`);
     spyService.getNews().subscribe((result) => {
-      console.log(`This is what you get from getNews(): ${result[0].articles.title}`)
+      console.log(`This is what you get from getNews(): ${result[0].articles.title}\n${result.articles[0].title}`);
+      returnedVal = result;
     });
     expect(spyService.getNews).toHaveBeenCalled();
+    expect(returnedVal).toBe(newsArticles);
     // expect(service.getNews()).toEqual(articles);
 
   }))
