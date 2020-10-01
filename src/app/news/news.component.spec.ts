@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { of } from 'rxjs';
 
@@ -138,7 +138,7 @@ describe("should test jasmine concepts", () => {
     expect(spyService.getNews).toHaveBeenCalled();
     expect(returnedVal).toBe(newsArticles);
     // expect(service.getNews()).toEqual(articles);
-
+    flush();
   }))
 });
 
