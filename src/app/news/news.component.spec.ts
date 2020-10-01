@@ -94,29 +94,41 @@ xdescribe('NewsComponent', () => {
 describe("should test jasmine concepts", () => {
   let component: NewsComponent;
   let fixture: ComponentFixture<NewsComponent>;
-  let service: ApiService;
+  let spyService;
+  let getNews;
 
   let articles: any;
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       declarations: [],
       imports: [NewsComponent],
-      providers: []
-    })
+      providers: [
+        { provide: ApiService, useValue: spyService }
+      ]
+    }).compileComponents();
   }))
 
+  beforeEach(() => {
+    fixture = TestBed.createComponent(NewsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-  it("should create a spy on AFunction and use the fake function", () => {
+
+  // async and fakeAsync have caused certain things to not show up in the console. waiting for undefined things to be defined.
+  it("should create a spy on AFunction and use the fake function", async(() => {
     const articles = [{ articles: { 'title': 'test' } }];
+    console.log('checkpoint1');
     // creates a fake function called getNews in ApiService that is called "mySpy" 
     // and returns newsArticles when called
-    service.getNews = jasmine.createSpy("mySpy").and.returnValue(articles);
+    spyService = jasmine.createSpyObj('spyService', ["getNews"]);
+    getNews = spyService.and.returnValue(articles);
     console.log('hello checkpoint');
-    console.log(`This is what is returned in place of getNews ${service.getNews()}`); 
-    expect(service.getNews).toHaveBeenCalled();
+    console.log(`This is what is returned in place of getNews ${spyService.getNews()}`);
+    expect(spyService.getNews).toHaveBeenCalled();
     // expect(service.getNews()).toEqual(articles);
 
-  })
+  }))
 });
 
 

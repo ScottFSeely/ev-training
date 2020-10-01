@@ -58,7 +58,7 @@ import { UnitTestComponent } from './unit-test/unit-test.component';
     // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false })
   ],
   exports: [
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
