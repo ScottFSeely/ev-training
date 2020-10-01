@@ -97,14 +97,18 @@ describe("should test jasmine concepts", () => {
   let spyService;
   let getNews;
 
-  let articles: any;
+  let newsArticles;
   beforeEach(async(() => {
 
-    const articles = [{ articles: { 'title': 'test' } }];
+    /* since this is in the array you access the 'test' by
+    1. newsArticles[0] = { articles: { 'title': 'test' } }
+    2. newsArticles[0].articles = {'title': 'test'}
+    3. newsArticles[0].articles.title = 'test' */
+    let newsArticles = [{ articles: { 'title': 'test' } }];
     // creates a fake function called getNews in ApiService that is called "mySpy" 
     // and returns newsArticles when called
     spyService = jasmine.createSpyObj('spyService', ["getNews"]);
-    getNews = spyService.getNews.and.returnValue(of(articles));
+    getNews = spyService.getNews.and.returnValue(of(newsArticles));
 
     TestBed.configureTestingModule({
       declarations: [
@@ -125,13 +129,12 @@ describe("should test jasmine concepts", () => {
 
 
   // async and fakeAsync have caused certain things to not show up in the console. waiting for undefined things to be defined.
-  it("should create a spy on AFunction and use the fake function", async(() => {
+  it("should create a spy on AFunction and use the fake function", fakeAsync(() => {
 
     console.log(`spyService.getNews: ${spyService.getNews}`);
-    spyService.getNews()
-      .subscribe(result => {
-        console.log(`This is what you get from getNews(): ${result}\n${result.articles}\n`)
-      });
+    spyService.getNews().subscribe((result) => {
+      console.log(`This is what you get from getNews(): ${result[0].articles.title}`)
+    });
     expect(spyService.getNews).toHaveBeenCalled();
     // expect(service.getNews()).toEqual(articles);
 
